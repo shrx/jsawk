@@ -1132,7 +1132,7 @@ replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
   };
   window.json = function() {
     try {
-      return JSON.stringify.apply(window, arguments);
+      return decodeURIComponent(escape(JSON.stringify.apply(window, arguments)));
     } catch (e) {
       err("jsawk: JSON stringify error: "+e);
       quit(5);
